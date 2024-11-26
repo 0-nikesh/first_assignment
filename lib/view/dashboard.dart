@@ -14,38 +14,40 @@ class Dashboard extends StatelessWidget {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+        child: ListView(
           children: [
-            ElevatedButton(
+            DashboardButton(
+              label: 'Arithmetic',
+              icon: Icons.calculate,
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (_) => const ArithmeticView()),
                 );
               },
-              child: const Text('Arithmetic'),
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
+            DashboardButton(
+              label: 'Simple Interest',
+              icon: Icons.monetization_on_outlined,
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (_) => const SiView()),
                 );
               },
-              child: const Text('Simpleinterest'),
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
+            DashboardButton(
+              label: 'Area of Circle',
+              icon: Icons.circle_outlined,
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (_) => const AreaCircle()),
                 );
               },
-              child: const Text('AreaofcircleView'),
             ),
           ],
         ),
@@ -54,20 +56,47 @@ class Dashboard extends StatelessWidget {
   }
 }
 
-class PageOne extends StatelessWidget {
-  const PageOne({super.key});
+class DashboardButton extends StatelessWidget {
+  final String label;
+  final IconData icon;
+  final VoidCallback onPressed;
+
+  const DashboardButton({
+    required this.label,
+    required this.icon,
+    required this.onPressed,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Page One'),
-      ),
-      body: const Center(
-        child: Text(
-          'Welcome to Page One!',
-          style: TextStyle(fontSize: 24),
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
         ),
+        backgroundColor: Colors.blueAccent,
+      ),
+      onPressed: onPressed,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Icon(
+            icon,
+            size: 30,
+            color: Colors.white,
+          ),
+          Text(
+            label,
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          const Icon(
+            Icons.arrow_forward_ios,
+            size: 20,
+            color: Colors.white,
+          ),
+        ],
       ),
     );
   }
