@@ -17,7 +17,7 @@ class _SiViewState extends State<SiView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Arithemtic'),
+        title: const Text('Simple Interest'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8),
@@ -62,7 +62,7 @@ class _SiViewState extends State<SiView> {
             const SizedBox(
               height: 8,
             ),
-            Text('Si : $Si',
+            Text('Simple Interest : $Si',
                 style: const TextStyle(
                   fontSize: 20,
                 )),
