@@ -1,5 +1,6 @@
 import 'package:first_assignment/view/area_circle.dart';
 import 'package:first_assignment/view/arithemetic.dart';
+import 'package:first_assignment/view/column_view.dart';
 import 'package:first_assignment/view/si_view.dart';
 import 'package:flutter/material.dart';
 
@@ -46,6 +47,17 @@ class Dashboard extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (_) => const AreaCircle()),
+                );
+              },
+            ),
+            const SizedBox(height: 20),
+            DashboardButton(
+              label: 'Container',
+              icon: Icons.circle_outlined,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const ContainerView()),
                 );
               },
             ),
